@@ -1,0 +1,16 @@
+// В базе данных Redis подберите коллекцию для подсчета посещений с определенных IP-адресов.
+MSET ip "192.16.0.1" visits "0"
+
+// При помощи базы данных Redis решите задачу поиска имени пользователя по электронному адресу и наоборот, 
+// поиск электронного адреса пользователя по его имени.
+hmset users:1 username "test" email "test@mail.ru"
+sadd username:test test
+sadd email:test@mail.ru "test@mail.ru"
+sinter username:test
+
+///Организуйте хранение категорий и товарных позиций учебной базы данных shop в СУБД MongoDB.
+
+use shop
+db.shop.categories.insert({ category: '1', alias: 'category_1'})
+db.shop.product.insert({ categoryId: '1', name: 'product'})
+db.shop.product.find({ category_id: '1' });
